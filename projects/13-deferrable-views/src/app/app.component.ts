@@ -9,7 +9,13 @@ import { PostsComponent } from './posts/posts.component';
     <section class="container">
       <h1>Deferrable Views Example</h1>
       <button #loadPosts>Load Posts</button>
-      <app-posts />
+      @defer (on interaction(loadPosts); prefetch on idle) {
+        <app-posts />
+    } @placeholder {
+    <section>
+            <i>(press "Load Posts" to retrieve the posts)</i>
+    </section>
+    }
     </section>
   `,
 })
